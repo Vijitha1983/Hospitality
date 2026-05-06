@@ -1,0 +1,12 @@
+{
+  "name": "Room Amenity",
+  "module": "Hotel",
+  "doctype": "DocType",
+  "istable": 1,
+  "fields": [
+    {"fieldname": "amenity", "fieldtype": "Data", "label": "Amenity", "reqd": 1, "in_list_view": 1},
+    {"fieldname": "is_complimentary", "fieldtype": "Check", "label": "Complimentary", "in_list_view": 1},
+    {"fieldname": "remarks", "fieldtype": "Data", "label": "Remarks"}
+  ],
+  "permissions": []
+}

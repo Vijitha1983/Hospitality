@@ -1,0 +1,14 @@
+{
+  "name": "Hotel Revenue Report",
+  "module": "Hotel",
+  "report_name": "Hotel Revenue Report",
+  "report_type": "Script Report",
+  "ref_doctype": "Guest Folio",
+  "is_standard": "Yes",
+  "filters": [
+    {"fieldname": "from_date", "fieldtype": "Date", "label": "From Date", "reqd": 1},
+    {"fieldname": "to_date", "fieldtype": "Date", "label": "To Date", "reqd": 1},
+    {"fieldname": "outlet", "fieldtype": "Link", "label": "Outlet", "options": "Outlet"},
+    {"fieldname": "charge_type", "fieldtype": "Data", "label": "Charge Type"}
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "name": "Occupancy Report",
+  "module": "Hotel",
+  "report_name": "Occupancy Report",
+  "report_type": "Script Report",
+  "ref_doctype": "Hotel Booking",
+  "is_standard": "Yes",
+  "filters": [
+    {"fieldname": "from_date", "fieldtype": "Date", "label": "From Date", "reqd": 1},
+    {"fieldname": "to_date", "fieldtype": "Date", "label": "To Date", "reqd": 1},
+    {"fieldname": "room_type", "fieldtype": "Link", "label": "Room Type", "options": "Room Type"}
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "name": "Bar Variance Report",
+  "module": "Bar",
+  "report_name": "Bar Variance Report",
+  "report_type": "Script Report",
+  "ref_doctype": "Liquor Stock Entry",
+  "is_standard": "Yes",
+  "filters": [
+    {"fieldname": "from_date", "fieldtype": "Date", "label": "From Date", "reqd": 1},
+    {"fieldname": "to_date", "fieldtype": "Date", "label": "To Date", "reqd": 1},
+    {"fieldname": "outlet", "fieldtype": "Link", "label": "Outlet", "options": "Outlet"}
+  ]
+}

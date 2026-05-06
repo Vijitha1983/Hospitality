@@ -1,0 +1,11 @@
+[
+  {"doctype": "Role", "role_name": "Hotel Manager", "desk_access": 1},
+  {"doctype": "Role", "role_name": "Hotel User", "desk_access": 1},
+  {"doctype": "Role", "role_name": "Restaurant Manager", "desk_access": 1},
+  {"doctype": "Role", "role_name": "Restaurant User", "desk_access": 1},
+  {"doctype": "Role", "role_name": "Bar Manager", "desk_access": 1},
+  {"doctype": "Role", "role_name": "Bar User", "desk_access": 1},
+  {"doctype": "Role", "role_name": "Housekeeping User", "desk_access": 1},
+  {"doctype": "Role", "role_name": "Kitchen User", "desk_access": 1},
+  {"doctype": "Role", "role_name": "Bartender", "desk_access": 1}
+]

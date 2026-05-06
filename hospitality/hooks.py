@@ -60,5 +60,7 @@ override_whitelisted_methods = {}
 
 # ─── Fixtures ─────────────────────────────────────────────────────────────────
 fixtures = [
+    "Role",
     {"dt": "Charge Type"},
+    {"dt": "Print Format", "filters": [["module", "in", ["Hotel", "Restaurant", "Bar", "Shared"]]]},
 ]

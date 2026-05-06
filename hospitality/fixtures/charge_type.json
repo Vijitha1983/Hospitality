@@ -1,0 +1,12 @@
+[
+  {"doctype": "Charge Type", "charge_name": "Room Rent", "charge_category": "Room", "is_active": 1, "is_taxable": 1},
+  {"doctype": "Charge Type", "charge_name": "Food & Beverage", "charge_category": "Food and Beverage", "is_active": 1, "is_taxable": 1},
+  {"doctype": "Charge Type", "charge_name": "Bar & Beverages", "charge_category": "Food and Beverage", "is_active": 1, "is_taxable": 1},
+  {"doctype": "Charge Type", "charge_name": "Laundry", "charge_category": "Laundry", "is_active": 1, "is_taxable": 1},
+  {"doctype": "Charge Type", "charge_name": "Minibar", "charge_category": "Minibar", "is_active": 1, "is_taxable": 1},
+  {"doctype": "Charge Type", "charge_name": "Telephone", "charge_category": "Telephone", "is_active": 1, "is_taxable": 0},
+  {"doctype": "Charge Type", "charge_name": "Transport", "charge_category": "Transport", "is_active": 1, "is_taxable": 1},
+  {"doctype": "Charge Type", "charge_name": "Spa & Wellness", "charge_category": "Spa", "is_active": 1, "is_taxable": 1},
+  {"doctype": "Charge Type", "charge_name": "Banquet", "charge_category": "Miscellaneous", "is_active": 1, "is_taxable": 1},
+  {"doctype": "Charge Type", "charge_name": "Miscellaneous", "charge_category": "Miscellaneous", "is_active": 1, "is_taxable": 0}
+]

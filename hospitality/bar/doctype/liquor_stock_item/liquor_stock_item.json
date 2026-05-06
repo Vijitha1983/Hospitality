@@ -1,0 +1,18 @@
+{
+  "name": "Liquor Stock Item",
+  "module": "Bar",
+  "doctype": "DocType",
+  "istable": 1,
+  "fields": [
+    {"fieldname": "item", "fieldtype": "Link", "label": "Item", "reqd": 1, "options": "Item", "in_list_view": 1},
+    {"fieldname": "unit", "fieldtype": "Data", "label": "Unit", "in_list_view": 1},
+    {"fieldname": "opening_qty", "fieldtype": "Float", "label": "Opening", "in_list_view": 1},
+    {"fieldname": "received_qty", "fieldtype": "Float", "label": "Received", "in_list_view": 1},
+    {"fieldname": "sales_qty", "fieldtype": "Float", "label": "Sales", "in_list_view": 1},
+    {"fieldname": "closing_qty", "fieldtype": "Float", "label": "Closing", "read_only": 1, "in_list_view": 1},
+    {"fieldname": "variance", "fieldtype": "Float", "label": "Variance", "read_only": 1},
+    {"fieldname": "par_level", "fieldtype": "Float", "label": "Par Level"},
+    {"fieldname": "reorder_qty", "fieldtype": "Float", "label": "Reorder Qty"}
+  ],
+  "permissions": []
+}
