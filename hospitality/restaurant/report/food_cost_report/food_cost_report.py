@@ -19,7 +19,8 @@ def execute(filters=None):
         {"label": "GP %", "fieldname": "gp_pct", "fieldtype": "Percent", "width": 90},
     ]
 
-    conditions = ["ro.docstatus = 1", "ro.order_date BETWEEN %s AND %s"]
+    # Items are stored in KOT Item (shared child table), parent is the Restaurant Order
+    conditions = ["ro.docstatus = 1", "DATE(ro.order_time) BETWEEN %s AND %s"]
     values = [from_date, to_date]
 
     if outlet:
@@ -33,18 +34,19 @@ def execute(filters=None):
 
     data = frappe.db.sql(f"""
         SELECT
-            roi.menu_item,
+            ki.menu_item,
             mi.category,
-            SUM(roi.qty) AS qty_sold,
+            SUM(ki.qty) AS qty_sold,
             mi.selling_price,
             mi.food_cost,
-            SUM(roi.qty * mi.selling_price) AS total_revenue,
-            SUM(roi.qty * mi.food_cost) AS total_cost
-        FROM `tabRestaurant Order Item` roi
-        JOIN `tabRestaurant Order` ro ON ro.name = roi.parent
-        JOIN `tabMenu Item` mi ON mi.name = roi.menu_item
+            SUM(ki.qty * mi.selling_price) AS total_revenue,
+            SUM(ki.qty * mi.food_cost) AS total_cost
+        FROM `tabKOT Item` ki
+        JOIN `tabRestaurant Order` ro ON ro.name = ki.parent
+        JOIN `tabMenu Item` mi ON mi.name = ki.menu_item
         WHERE {where}
-        GROUP BY roi.menu_item
+          AND ki.status != 'Void'
+        GROUP BY ki.menu_item
         ORDER BY total_revenue DESC
     """, values, as_dict=True)
 

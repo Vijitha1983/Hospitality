@@ -17,3 +17,12 @@ class MenuItem(Document):
     def _calc_gp(self):
         if self.price and self.cost_price:
             self.gross_profit_pct = ((self.price - self.cost_price) / self.price) * 100
+
+
+@frappe.whitelist()
+def fetch_bom_cost(menu_item):
+    doc = frappe.get_doc("Menu Item", menu_item)
+    doc._update_cost_from_bom()
+    doc._calc_gp()
+    doc.save(ignore_permissions=True)
+    return doc.cost_price

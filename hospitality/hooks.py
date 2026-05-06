@@ -55,6 +55,9 @@ scheduler_events = {
 app_include_css = "/assets/hospitality/css/hospitality.css"
 app_include_js = "/assets/hospitality/js/hospitality.js"
 
+# ─── Install / Uninstall Hooks ────────────────────────────────────────────────
+after_install = "hospitality.install.after_install"
+
 # ─── Override Whitelisted Methods ──────────────────────────────────────────────
 override_whitelisted_methods = {}
 

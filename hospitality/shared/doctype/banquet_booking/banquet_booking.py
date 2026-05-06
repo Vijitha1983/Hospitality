@@ -41,3 +41,36 @@ class BanquetBooking(Document):
 
     def on_cancel(self):
         self.status = "Cancelled"
+
+
+@frappe.whitelist()
+def create_invoice(booking):
+    doc = frappe.get_doc("Banquet Booking", booking)
+    if doc.docstatus != 1:
+        frappe.throw("Booking must be submitted before creating an invoice.")
+    if doc.sales_invoice:
+        frappe.throw(f"Sales Invoice {doc.sales_invoice} already exists.")
+
+    customer = frappe.db.get_value("Guest", doc.guest, "customer") if doc.guest else None
+    if not customer:
+        frappe.throw("Guest must be linked to an ERPNext Customer. Please ensure the Guest record has a Customer.")
+
+    invoice = frappe.get_doc({
+        "doctype": "Sales Invoice",
+        "customer": customer,
+        "due_date": doc.event_date,
+        "items": [
+            {
+                "item_name": row.item_name,
+                "description": row.item_name,
+                "qty": row.qty,
+                "rate": row.rate,
+                "amount": row.amount,
+            }
+            for row in doc.package_items
+        ],
+    })
+    invoice.insert(ignore_permissions=True)
+    doc.db_set("sales_invoice", invoice.name)
+    frappe.db.commit()
+    return invoice.name

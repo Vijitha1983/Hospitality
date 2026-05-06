@@ -1,0 +1,56 @@
+/* Hospitality Module — Global Styles */
+
+/* Status badge colours for Room and Table statuses */
+.indicator-pill.vacant-clean,
+.indicator-pill[data-status="Vacant Clean"] { background: #4CAF50; color: white; }
+
+.indicator-pill.vacant-dirty,
+.indicator-pill[data-status="Vacant Dirty"] { background: #FF9800; color: white; }
+
+.indicator-pill.occupied,
+.indicator-pill[data-status="Occupied"] { background: #F44336; color: white; }
+
+.indicator-pill.out-of-order,
+.indicator-pill[data-status="Out of Order"] { background: #9E9E9E; color: white; }
+
+/* KOT / BOT ticket styling in list view */
+.frappe-list .list-row[data-status="Pending"] { border-left: 4px solid #FF9800; }
+.frappe-list .list-row[data-status="In Preparation"] { border-left: 4px solid #2196F3; }
+.frappe-list .list-row[data-status="Ready"] { border-left: 4px solid #4CAF50; }
+.frappe-list .list-row[data-status="Served"] { border-left: 4px solid #9E9E9E; }
+
+/* Guest Folio — posting rows */
+.folio-charge-row { border-bottom: 1px solid #eee; padding: 4px 0; }
+.folio-total-row { font-weight: bold; border-top: 2px solid #333; }
+
+/* Bar Tab — open tab highlight */
+.tab-open-badge {
+    display: inline-block;
+    background: #E53935;
+    color: white;
+    border-radius: 4px;
+    padding: 2px 8px;
+    font-size: 11px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+/* Dashboard cards for occupancy */
+.hospitality-stat-card {
+    background: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 6px;
+    padding: 16px;
+    text-align: center;
+    margin: 8px;
+}
+.hospitality-stat-card .stat-value {
+    font-size: 32px;
+    font-weight: bold;
+    color: #1565C0;
+}
+.hospitality-stat-card .stat-label {
+    font-size: 12px;
+    color: #757575;
+    text-transform: uppercase;
+}

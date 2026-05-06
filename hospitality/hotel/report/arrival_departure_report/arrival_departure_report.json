@@ -1,0 +1,14 @@
+{
+  "name": "Arrival Departure Report",
+  "module": "Hotel",
+  "report_name": "Arrival Departure Report",
+  "report_type": "Script Report",
+  "ref_doctype": "Hotel Booking",
+  "is_standard": "Yes",
+  "filters": [
+    {"fieldname": "report_date", "fieldtype": "Date", "label": "Date", "reqd": 1, "default": "Today"},
+    {"fieldname": "report_type", "fieldtype": "Select", "label": "Report Type",
+      "options": "Both\nArrivals Only\nDepartures Only", "default": "Both"},
+    {"fieldname": "room_type", "fieldtype": "Link", "label": "Room Type", "options": "Room Type"}
+  ]
+}

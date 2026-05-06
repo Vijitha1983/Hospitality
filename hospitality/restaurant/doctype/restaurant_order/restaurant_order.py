@@ -95,3 +95,38 @@ class RestaurantOrder(Document):
                 all_items.extend(bom_items)
         if all_items:
             create_material_issue(all_items, warehouse, company, self.name, "Restaurant Order")
+
+
+@frappe.whitelist()
+def create_pos_invoice(order):
+    doc = frappe.get_doc("Restaurant Order", order)
+    if doc.docstatus != 1:
+        frappe.throw("Order must be submitted before generating a bill.")
+    if doc.pos_invoice:
+        frappe.throw(f"POS Invoice {doc.pos_invoice} already exists for this order.")
+
+    outlet = frappe.get_doc("Outlet", doc.outlet)
+    pos_profile = outlet.pos_profile
+    if not pos_profile:
+        frappe.throw(f"No POS Profile set on Outlet {doc.outlet}.")
+
+    invoice = frappe.get_doc({
+        "doctype": "POS Invoice",
+        "pos_profile": pos_profile,
+        "customer": frappe.db.get_value("Outlet", doc.outlet, "walk_in_customer") or "Walk-in Customer",
+        "items": [
+            {
+                "item_code": frappe.db.get_value("Menu Item", i.menu_item, "item_code"),
+                "item_name": i.item_name,
+                "qty": i.qty,
+                "rate": i.rate,
+                "amount": i.amount,
+            }
+            for i in doc.items if i.status != "Void"
+        ],
+    })
+    invoice.insert(ignore_permissions=True)
+    doc.db_set("pos_invoice", invoice.name)
+    doc.db_set("status", "Billed")
+    frappe.db.commit()
+    return invoice.name

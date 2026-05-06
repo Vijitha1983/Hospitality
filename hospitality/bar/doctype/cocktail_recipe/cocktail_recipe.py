@@ -17,3 +17,11 @@ class CocktailRecipe(Document):
 
         if self.selling_price and self.cost_per_serve:
             self.gp_percent = ((self.selling_price - self.cost_per_serve) / self.selling_price) * 100
+
+
+@frappe.whitelist()
+def calculate_cost(recipe):
+    doc = frappe.get_doc("Cocktail Recipe", recipe)
+    doc._update_costs()
+    doc.save(ignore_permissions=True)
+    return doc.cost_per_serve
