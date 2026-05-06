@@ -1,0 +1,31 @@
+{
+  "name": "Drink Menu Item",
+  "module": "Bar",
+  "doctype": "DocType",
+  "is_submittable": 0,
+  "autoname": "naming_series:",
+  "naming_series": "DRK-.#####",
+  "title_field": "item_name",
+  "search_fields": "item_name,category,spirit_type",
+  "fields": [
+    {"fieldname": "item_name", "fieldtype": "Data", "label": "Drink Name", "reqd": 1, "in_list_view": 1},
+    {"fieldname": "item_code", "fieldtype": "Link", "label": "ERPNext Item", "reqd": 1, "options": "Item"},
+    {"fieldname": "outlet", "fieldtype": "Link", "label": "Outlet", "reqd": 1, "options": "Outlet"},
+    {"fieldname": "col_break_1", "fieldtype": "Column Break"},
+    {"fieldname": "category", "fieldtype": "Select", "label": "Category", "reqd": 1, "in_list_view": 1,
+      "options": "\nBeer\nWine\nSpirits\nCocktails\nMocktails\nSoft Drinks\nHot Beverages"},
+    {"fieldname": "spirit_type", "fieldtype": "Data", "label": "Spirit Type"},
+    {"fieldname": "is_available", "fieldtype": "Check", "label": "Is Available", "default": "1", "in_list_view": 1},
+    {"fieldname": "section_pricing", "fieldtype": "Section Break", "label": "Pricing"},
+    {"fieldname": "price", "fieldtype": "Currency", "label": "Price", "reqd": 1},
+    {"fieldname": "happy_hour_price", "fieldtype": "Currency", "label": "Happy Hour Price"},
+    {"fieldname": "col_break_2", "fieldtype": "Column Break"},
+    {"fieldname": "measure_ml", "fieldtype": "Float", "label": "Standard Pour (ml)"},
+    {"fieldname": "cost_price", "fieldtype": "Currency", "label": "Cost Price", "read_only": 1},
+    {"fieldname": "recipe", "fieldtype": "Link", "label": "Cocktail Recipe", "options": "Cocktail Recipe"}
+  ],
+  "permissions": [
+    {"role": "Bar Manager", "read": 1, "write": 1, "create": 1, "delete": 1},
+    {"role": "Bar User", "read": 1}
+  ]
+}

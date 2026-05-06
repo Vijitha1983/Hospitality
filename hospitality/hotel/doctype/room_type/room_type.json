@@ -1,0 +1,30 @@
+{
+  "name": "Room Type",
+  "module": "Hotel",
+  "doctype": "DocType",
+  "is_submittable": 0,
+  "autoname": "field:name",
+  "title_field": "name",
+  "fields": [
+    {"fieldname": "name", "fieldtype": "Data", "label": "Room Type Name", "reqd": 1, "in_list_view": 1},
+    {"fieldname": "description", "fieldtype": "Small Text", "label": "Description"},
+    {"fieldname": "col_break_1", "fieldtype": "Column Break"},
+    {"fieldname": "is_active", "fieldtype": "Check", "label": "Is Active", "default": "1"},
+    {"fieldname": "section_capacity", "fieldtype": "Section Break", "label": "Capacity"},
+    {"fieldname": "max_occupancy", "fieldtype": "Int", "label": "Max Occupancy", "reqd": 1},
+    {"fieldname": "num_beds", "fieldtype": "Int", "label": "Number of Beds", "reqd": 1},
+    {"fieldname": "col_break_2", "fieldtype": "Column Break"},
+    {"fieldname": "bed_type", "fieldtype": "Select", "label": "Bed Type", "reqd": 1,
+      "options": "\nSingle\nDouble\nTwin\nKing\nQueen"},
+    {"fieldname": "base_rate", "fieldtype": "Currency", "label": "Base Nightly Rate", "reqd": 1},
+    {"fieldname": "section_amenities", "fieldtype": "Section Break", "label": "Amenities"},
+    {"fieldname": "amenities", "fieldtype": "Table", "label": "Amenities",
+      "options": "Room Amenity"},
+    {"fieldname": "images", "fieldtype": "Attach", "label": "Images"}
+  ],
+  "permissions": [
+    {"role": "Hotel Manager", "read": 1, "write": 1, "create": 1, "delete": 1},
+    {"role": "Hotel User", "read": 1}
+  ],
+  "track_changes": 1
+}

@@ -1,0 +1,2 @@
+include requirements.txt
+recursive-include hospitality *.json *.js *.css *.html *.jinja2 *.py

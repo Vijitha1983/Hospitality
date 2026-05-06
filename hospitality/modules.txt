@@ -1,0 +1,4 @@
+Hotel
+Restaurant
+Bar
+Shared

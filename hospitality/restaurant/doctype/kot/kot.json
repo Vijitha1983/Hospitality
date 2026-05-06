@@ -1,0 +1,35 @@
+{
+  "name": "KOT",
+  "module": "Restaurant",
+  "doctype": "DocType",
+  "is_submittable": 0,
+  "autoname": "naming_series:",
+  "naming_series": "KOT-.YYYY.-.#####",
+  "title_field": "table",
+  "search_fields": "kot_no,table,kitchen_station,status",
+  "fields": [
+    {"fieldname": "kot_no", "fieldtype": "Data", "label": "KOT No", "read_only": 1, "in_list_view": 1},
+    {"fieldname": "restaurant_order", "fieldtype": "Link", "label": "Restaurant Order", "reqd": 1, "options": "Restaurant Order"},
+    {"fieldname": "table", "fieldtype": "Link", "label": "Table", "reqd": 1, "options": "Dining Table", "in_list_view": 1},
+    {"fieldname": "col_break_1", "fieldtype": "Column Break"},
+    {"fieldname": "outlet", "fieldtype": "Link", "label": "Outlet", "reqd": 1, "options": "Outlet"},
+    {"fieldname": "kitchen_station", "fieldtype": "Select", "label": "Kitchen Station", "reqd": 1, "in_list_view": 1,
+      "options": "\nHot Kitchen\nCold Kitchen\nGrill\nTandoor\nDesserts\nBar"},
+    {"fieldname": "status", "fieldtype": "Select", "label": "Status", "reqd": 1, "in_list_view": 1,
+      "options": "Pending\nIn Preparation\nReady\nPartially Ready\nCancelled", "default": "Pending"},
+    {"fieldname": "section_timing", "fieldtype": "Section Break", "label": "Timing"},
+    {"fieldname": "fired_at", "fieldtype": "Datetime", "label": "Fired At", "reqd": 1},
+    {"fieldname": "ready_at", "fieldtype": "Datetime", "label": "Ready At"},
+    {"fieldname": "printed", "fieldtype": "Check", "label": "Printed / Sent to KDS"},
+    {"fieldname": "section_items", "fieldtype": "Section Break", "label": "Items"},
+    {"fieldname": "items", "fieldtype": "Table", "label": "Items", "reqd": 1, "options": "KOT Item"}
+  ],
+  "permissions": [
+    {"role": "Restaurant Manager", "read": 1, "write": 1, "create": 1},
+    {"role": "Restaurant User", "read": 1, "write": 1, "create": 1},
+    {"role": "Kitchen User", "read": 1, "write": 1}
+  ],
+  "track_changes": 1,
+  "sort_field": "fired_at",
+  "sort_order": "ASC"
+}

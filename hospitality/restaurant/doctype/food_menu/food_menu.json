@@ -1,0 +1,23 @@
+{
+  "name": "Food Menu",
+  "module": "Restaurant",
+  "doctype": "DocType",
+  "is_submittable": 0,
+  "autoname": "field:menu_name",
+  "title_field": "menu_name",
+  "fields": [
+    {"fieldname": "menu_name", "fieldtype": "Data", "label": "Menu Name", "reqd": 1, "in_list_view": 1},
+    {"fieldname": "outlet", "fieldtype": "Link", "label": "Outlet", "reqd": 1, "options": "Outlet", "in_list_view": 1},
+    {"fieldname": "col_break_1", "fieldtype": "Column Break"},
+    {"fieldname": "menu_type", "fieldtype": "Select", "label": "Menu Type", "reqd": 1,
+      "options": "\nA La Carte\nTable D Hote\nBuffet\nSet Menu\nDaily Special"},
+    {"fieldname": "is_active", "fieldtype": "Check", "label": "Is Active", "default": "1"},
+    {"fieldname": "section_validity", "fieldtype": "Section Break", "label": "Validity"},
+    {"fieldname": "valid_from", "fieldtype": "Date", "label": "Valid From"},
+    {"fieldname": "valid_to", "fieldtype": "Date", "label": "Valid To"}
+  ],
+  "permissions": [
+    {"role": "Restaurant Manager", "read": 1, "write": 1, "create": 1, "delete": 1},
+    {"role": "Restaurant User", "read": 1}
+  ]
+}

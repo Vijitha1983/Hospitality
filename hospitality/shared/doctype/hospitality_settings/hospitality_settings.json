@@ -1,0 +1,35 @@
+{
+  "name": "Hospitality Settings",
+  "module": "Shared",
+  "doctype": "DocType",
+  "issingle": 1,
+  "is_submittable": 0,
+  "fields": [
+    {"fieldname": "company", "fieldtype": "Link", "label": "Company", "reqd": 1, "options": "Company"},
+    {"fieldname": "default_currency", "fieldtype": "Link", "label": "Default Currency", "reqd": 1, "options": "Currency"},
+    {"fieldname": "section_outlets", "fieldtype": "Section Break", "label": "Default Outlets"},
+    {"fieldname": "hotel_outlet", "fieldtype": "Link", "label": "Hotel Outlet", "options": "Outlet"},
+    {"fieldname": "restaurant_outlet", "fieldtype": "Link", "label": "Restaurant Outlet", "options": "Outlet"},
+    {"fieldname": "col_break_1", "fieldtype": "Column Break"},
+    {"fieldname": "bar_outlet", "fieldtype": "Link", "label": "Bar Outlet", "options": "Outlet"},
+    {"fieldname": "section_times", "fieldtype": "Section Break", "label": "Check-in / Check-out"},
+    {"fieldname": "checkin_time", "fieldtype": "Time", "label": "Standard Check-in Time", "reqd": 1, "default": "14:00:00"},
+    {"fieldname": "checkout_time", "fieldtype": "Time", "label": "Standard Check-out Time", "reqd": 1, "default": "12:00:00"},
+    {"fieldname": "section_deposit", "fieldtype": "Section Break", "label": "Advance Deposit"},
+    {"fieldname": "advance_required", "fieldtype": "Check", "label": "Require Advance Deposit"},
+    {"fieldname": "advance_pct", "fieldtype": "Percent", "label": "Advance Percentage", "depends_on": "advance_required"},
+    {"fieldname": "section_notifications", "fieldtype": "Section Break", "label": "Notifications"},
+    {"fieldname": "booking_confirmation_template", "fieldtype": "Link", "label": "Booking Confirmation Template",
+      "options": "Email Template"},
+    {"fieldname": "checkin_sms_template", "fieldtype": "Link", "label": "Check-in SMS Template",
+      "options": "Notification"},
+    {"fieldname": "section_loyalty", "fieldtype": "Section Break", "label": "Loyalty Programme"},
+    {"fieldname": "loyalty_enabled", "fieldtype": "Check", "label": "Enable Loyalty Points"},
+    {"fieldname": "points_per_currency", "fieldtype": "Float", "label": "Points per Currency Unit",
+      "depends_on": "loyalty_enabled", "default": "1"}
+  ],
+  "permissions": [
+    {"role": "Hotel Manager", "read": 1, "write": 1},
+    {"role": "System Manager", "read": 1, "write": 1}
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "name": "BOT",
+  "module": "Bar",
+  "doctype": "DocType",
+  "is_submittable": 0,
+  "autoname": "naming_series:",
+  "naming_series": "BOT-.YYYY.-.#####",
+  "title_field": "bot_no",
+  "fields": [
+    {"fieldname": "bot_no", "fieldtype": "Data", "label": "BOT No", "read_only": 1, "in_list_view": 1},
+    {"fieldname": "bar_order", "fieldtype": "Link", "label": "Bar Order", "reqd": 1, "options": "Bar Order"},
+    {"fieldname": "tab", "fieldtype": "Link", "label": "Bar Tab", "reqd": 1, "options": "Bar Tab", "in_list_view": 1},
+    {"fieldname": "col_break_1", "fieldtype": "Column Break"},
+    {"fieldname": "outlet", "fieldtype": "Link", "label": "Outlet", "reqd": 1, "options": "Outlet"},
+    {"fieldname": "bar_station", "fieldtype": "Select", "label": "Bar Station", "reqd": 1, "in_list_view": 1,
+      "options": "\nMain Bar\nCocktail Station\nWine Station\nDraught Station"},
+    {"fieldname": "status", "fieldtype": "Select", "label": "Status", "reqd": 1, "in_list_view": 1,
+      "options": "Pending\nIn Preparation\nReady\nServed", "default": "Pending"},
+    {"fieldname": "section_timing", "fieldtype": "Section Break", "label": "Timing"},
+    {"fieldname": "fired_at", "fieldtype": "Datetime", "label": "Fired At", "reqd": 1},
+    {"fieldname": "ready_at", "fieldtype": "Datetime", "label": "Ready At"},
+    {"fieldname": "bartender", "fieldtype": "Link", "label": "Bartender", "options": "Employee"},
+    {"fieldname": "section_items", "fieldtype": "Section Break", "label": "Items"},
+    {"fieldname": "items", "fieldtype": "Table", "label": "Items", "reqd": 1, "options": "BOT Item"}
+  ],
+  "permissions": [
+    {"role": "Bar Manager", "read": 1, "write": 1, "create": 1},
+    {"role": "Bar User", "read": 1, "write": 1, "create": 1},
+    {"role": "Bartender", "read": 1, "write": 1}
+  ],
+  "track_changes": 1
+}

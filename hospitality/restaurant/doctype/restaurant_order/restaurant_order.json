@@ -1,0 +1,39 @@
+{
+  "name": "Restaurant Order",
+  "module": "Restaurant",
+  "doctype": "DocType",
+  "is_submittable": 1,
+  "autoname": "naming_series:",
+  "naming_series": "RO-.YYYY.-.#####",
+  "title_field": "table",
+  "search_fields": "table,status,order_no",
+  "fields": [
+    {"fieldname": "order_no", "fieldtype": "Data", "label": "Order No", "read_only": 1, "in_list_view": 1},
+    {"fieldname": "outlet", "fieldtype": "Link", "label": "Outlet", "reqd": 1, "options": "Outlet"},
+    {"fieldname": "table", "fieldtype": "Link", "label": "Table", "reqd": 1, "options": "Dining Table", "in_list_view": 1},
+    {"fieldname": "col_break_1", "fieldtype": "Column Break"},
+    {"fieldname": "reservation", "fieldtype": "Link", "label": "Reservation", "options": "Table Reservation"},
+    {"fieldname": "num_covers", "fieldtype": "Int", "label": "Covers", "reqd": 1, "default": "1"},
+    {"fieldname": "order_time", "fieldtype": "Datetime", "label": "Order Time", "reqd": 1},
+    {"fieldname": "steward", "fieldtype": "Link", "label": "Steward", "options": "Employee"},
+    {"fieldname": "section_items", "fieldtype": "Section Break", "label": "Items"},
+    {"fieldname": "items", "fieldtype": "Table", "label": "Items", "reqd": 1, "options": "KOT Item"},
+    {"fieldname": "section_totals", "fieldtype": "Section Break", "label": "Totals"},
+    {"fieldname": "sub_total", "fieldtype": "Currency", "label": "Sub Total", "reqd": 1, "read_only": 1},
+    {"fieldname": "tax_amount", "fieldtype": "Currency", "label": "Tax", "read_only": 1},
+    {"fieldname": "col_break_2", "fieldtype": "Column Break"},
+    {"fieldname": "total_amount", "fieldtype": "Currency", "label": "Total", "reqd": 1, "read_only": 1},
+    {"fieldname": "status", "fieldtype": "Select", "label": "Status", "reqd": 1, "in_list_view": 1,
+      "options": "Open\nKOT Sent\nPartially Served\nServed\nBilled\nCancelled", "default": "Open"},
+    {"fieldname": "pos_invoice", "fieldtype": "Link", "label": "POS Invoice", "options": "POS Invoice", "read_only": 1},
+    {"fieldname": "section_room_service", "fieldtype": "Section Break", "label": "Room Service"},
+    {"fieldname": "is_room_service", "fieldtype": "Check", "label": "Is Room Service"},
+    {"fieldname": "folio", "fieldtype": "Link", "label": "Guest Folio", "options": "Guest Folio",
+      "depends_on": "is_room_service"}
+  ],
+  "permissions": [
+    {"role": "Restaurant Manager", "read": 1, "write": 1, "create": 1, "submit": 1, "cancel": 1},
+    {"role": "Restaurant User", "read": 1, "write": 1, "create": 1, "submit": 1}
+  ],
+  "track_changes": 1
+}

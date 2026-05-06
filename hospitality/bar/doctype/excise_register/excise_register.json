@@ -1,0 +1,30 @@
+{
+  "name": "Excise Register",
+  "module": "Bar",
+  "doctype": "DocType",
+  "is_submittable": 1,
+  "autoname": "naming_series:",
+  "naming_series": "EXC-.YYYY.-.#####",
+  "title_field": "outlet",
+  "fields": [
+    {"fieldname": "register_date", "fieldtype": "Date", "label": "Date", "reqd": 1, "in_list_view": 1},
+    {"fieldname": "outlet", "fieldtype": "Link", "label": "Outlet", "reqd": 1, "options": "Outlet", "in_list_view": 1},
+    {"fieldname": "permit_no", "fieldtype": "Data", "label": "Excise Permit No", "reqd": 1},
+    {"fieldname": "col_break_1", "fieldtype": "Column Break"},
+    {"fieldname": "total_value", "fieldtype": "Currency", "label": "Total Value", "reqd": 1, "read_only": 1},
+    {"fieldname": "total_qty_ml", "fieldtype": "Float", "label": "Total Volume (ml)", "reqd": 1, "read_only": 1},
+    {"fieldname": "section_stock", "fieldtype": "Section Break", "label": "Stock Reference"},
+    {"fieldname": "opening_stock", "fieldtype": "Float", "label": "Opening Stock (bottles)"},
+    {"fieldname": "closing_stock", "fieldtype": "Float", "label": "Closing Stock (bottles)"},
+    {"fieldname": "section_sales", "fieldtype": "Section Break", "label": "Sales Lines"},
+    {"fieldname": "sales_lines", "fieldtype": "Table", "label": "Sales by Category", "reqd": 1,
+      "options": "Excise Sales Line"},
+    {"fieldname": "submitted_by", "fieldtype": "Link", "label": "Submitted By", "options": "Employee"},
+    {"fieldname": "is_submitted", "fieldtype": "Check", "label": "Final Submission Lock", "read_only": 1}
+  ],
+  "permissions": [
+    {"role": "Bar Manager", "read": 1, "write": 1, "create": 1, "submit": 1},
+    {"role": "System Manager", "read": 1, "write": 1, "create": 1, "submit": 1}
+  ],
+  "track_changes": 1
+}

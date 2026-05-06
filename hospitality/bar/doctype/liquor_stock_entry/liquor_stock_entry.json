@@ -1,0 +1,29 @@
+{
+  "name": "Liquor Stock Entry",
+  "module": "Bar",
+  "doctype": "DocType",
+  "is_submittable": 1,
+  "autoname": "naming_series:",
+  "naming_series": "LSE-.YYYY.-.#####",
+  "title_field": "outlet",
+  "fields": [
+    {"fieldname": "entry_date", "fieldtype": "Date", "label": "Date", "reqd": 1, "in_list_view": 1},
+    {"fieldname": "outlet", "fieldtype": "Link", "label": "Outlet", "reqd": 1, "options": "Outlet", "in_list_view": 1},
+    {"fieldname": "shift", "fieldtype": "Select", "label": "Shift", "reqd": 1, "in_list_view": 1,
+      "options": "\nOpening\nClosing"},
+    {"fieldname": "col_break_1", "fieldtype": "Column Break"},
+    {"fieldname": "counted_by", "fieldtype": "Link", "label": "Counted By", "reqd": 1, "options": "Employee"},
+    {"fieldname": "verified_by", "fieldtype": "Link", "label": "Verified By", "options": "Employee"},
+    {"fieldname": "status", "fieldtype": "Select", "label": "Status", "reqd": 1,
+      "options": "Draft\nSubmitted\nVariance Approved", "default": "Draft"},
+    {"fieldname": "section_items", "fieldtype": "Section Break", "label": "Stock Count"},
+    {"fieldname": "items", "fieldtype": "Table", "label": "Items", "reqd": 1, "options": "Liquor Stock Item"},
+    {"fieldname": "total_variance", "fieldtype": "Currency", "label": "Total Variance Value", "read_only": 1},
+    {"fieldname": "remarks", "fieldtype": "Small Text", "label": "Remarks"}
+  ],
+  "permissions": [
+    {"role": "Bar Manager", "read": 1, "write": 1, "create": 1, "submit": 1, "cancel": 1},
+    {"role": "Bar User", "read": 1, "write": 1, "create": 1, "submit": 1}
+  ],
+  "track_changes": 1
+}

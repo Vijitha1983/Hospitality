@@ -1,0 +1,38 @@
+{
+  "name": "Housekeeping Task",
+  "module": "Hotel",
+  "doctype": "DocType",
+  "is_submittable": 0,
+  "autoname": "naming_series:",
+  "naming_series": "HKT-.YYYY.-.#####",
+  "title_field": "room",
+  "search_fields": "room,assigned_to,status,task_date",
+  "fields": [
+    {"fieldname": "task_date", "fieldtype": "Date", "label": "Task Date", "reqd": 1, "in_list_view": 1},
+    {"fieldname": "room", "fieldtype": "Link", "label": "Room", "reqd": 1, "options": "Room", "in_list_view": 1},
+    {"fieldname": "col_break_1", "fieldtype": "Column Break"},
+    {"fieldname": "task_type", "fieldtype": "Select", "label": "Task Type", "reqd": 1, "in_list_view": 1,
+      "options": "\nDaily Clean\nDeep Clean\nTurndown\nInspection\nLinen Change"},
+    {"fieldname": "status", "fieldtype": "Select", "label": "Status", "reqd": 1, "in_list_view": 1,
+      "options": "Pending\nIn Progress\nDone\nInspected\nFailed", "default": "Pending"},
+    {"fieldname": "section_assignment", "fieldtype": "Section Break", "label": "Assignment"},
+    {"fieldname": "assigned_to", "fieldtype": "Link", "label": "Assigned To", "reqd": 1, "options": "Employee"},
+    {"fieldname": "supervisor", "fieldtype": "Link", "label": "Supervisor", "options": "Employee"},
+    {"fieldname": "col_break_2", "fieldtype": "Column Break"},
+    {"fieldname": "start_time", "fieldtype": "Time", "label": "Start Time"},
+    {"fieldname": "end_time", "fieldtype": "Time", "label": "End Time"},
+    {"fieldname": "section_inspection", "fieldtype": "Section Break", "label": "Inspection",
+      "depends_on": "eval:doc.task_type === 'Inspection'"},
+    {"fieldname": "inspection_result", "fieldtype": "Select", "label": "Inspection Result",
+      "options": "\nPass\nFail\nRe-clean Required"},
+    {"fieldname": "checklist", "fieldtype": "Table", "label": "Checklist", "options": "HK Checklist Item"},
+    {"fieldname": "remarks", "fieldtype": "Small Text", "label": "Remarks"}
+  ],
+  "permissions": [
+    {"role": "Hotel Manager", "read": 1, "write": 1, "create": 1, "delete": 1},
+    {"role": "Housekeeping User", "read": 1, "write": 1, "create": 1}
+  ],
+  "track_changes": 1,
+  "sort_field": "task_date",
+  "sort_order": "DESC"
+}

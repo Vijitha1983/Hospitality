@@ -1,0 +1,31 @@
+{
+  "name": "Dining Table",
+  "module": "Restaurant",
+  "doctype": "DocType",
+  "is_submittable": 0,
+  "autoname": "field:table_number",
+  "title_field": "table_number",
+  "fields": [
+    {"fieldname": "table_number", "fieldtype": "Data", "label": "Table Number", "reqd": 1, "in_list_view": 1},
+    {"fieldname": "outlet", "fieldtype": "Link", "label": "Outlet", "reqd": 1, "options": "Outlet", "in_list_view": 1},
+    {"fieldname": "section", "fieldtype": "Link", "label": "Section", "reqd": 1, "options": "Table Section"},
+    {"fieldname": "col_break_1", "fieldtype": "Column Break"},
+    {"fieldname": "seating_capacity", "fieldtype": "Int", "label": "Seating Capacity", "reqd": 1},
+    {"fieldname": "table_shape", "fieldtype": "Select", "label": "Table Shape",
+      "options": "\nRound\nSquare\nRectangle\nOval"},
+    {"fieldname": "is_active", "fieldtype": "Check", "label": "Is Active", "default": "1"},
+    {"fieldname": "section_status", "fieldtype": "Section Break", "label": "Status"},
+    {"fieldname": "current_status", "fieldtype": "Select", "label": "Status", "reqd": 1, "in_list_view": 1,
+      "options": "Available\nReserved\nOccupied\nDirty\nBlocked", "default": "Available"},
+    {"fieldname": "current_order", "fieldtype": "Link", "label": "Current Order",
+      "options": "Restaurant Order", "read_only": 1},
+    {"fieldname": "section_layout", "fieldtype": "Section Break", "label": "Floor Plan Position"},
+    {"fieldname": "pos_x", "fieldtype": "Float", "label": "X Position"},
+    {"fieldname": "pos_y", "fieldtype": "Float", "label": "Y Position"}
+  ],
+  "permissions": [
+    {"role": "Restaurant Manager", "read": 1, "write": 1, "create": 1, "delete": 1},
+    {"role": "Restaurant User", "read": 1, "write": 1}
+  ],
+  "track_changes": 1
+}

@@ -1,0 +1,36 @@
+{
+  "name": "Guest Folio",
+  "module": "Hotel",
+  "doctype": "DocType",
+  "is_submittable": 1,
+  "autoname": "naming_series:",
+  "naming_series": "FO-.YYYY.-.#####",
+  "title_field": "guest",
+  "search_fields": "guest,booking,status",
+  "fields": [
+    {"fieldname": "folio_no", "fieldtype": "Data", "label": "Folio No", "read_only": 1, "in_list_view": 1},
+    {"fieldname": "booking", "fieldtype": "Link", "label": "Booking", "reqd": 1, "options": "Hotel Booking"},
+    {"fieldname": "guest", "fieldtype": "Link", "label": "Guest", "reqd": 1, "options": "Guest", "in_list_view": 1},
+    {"fieldname": "col_break_1", "fieldtype": "Column Break"},
+    {"fieldname": "room", "fieldtype": "Link", "label": "Room", "reqd": 1, "options": "Room", "in_list_view": 1},
+    {"fieldname": "status", "fieldtype": "Select", "label": "Status", "reqd": 1, "in_list_view": 1,
+      "options": "Open\nSettled\nCancelled", "default": "Open"},
+    {"fieldname": "section_dates", "fieldtype": "Section Break", "label": "Dates"},
+    {"fieldname": "check_in_date", "fieldtype": "Date", "label": "Check-in Date", "reqd": 1},
+    {"fieldname": "check_out_date", "fieldtype": "Date", "label": "Check-out Date", "reqd": 1},
+    {"fieldname": "section_postings", "fieldtype": "Section Break", "label": "Postings"},
+    {"fieldname": "postings", "fieldtype": "Table", "label": "Postings", "options": "Folio Posting"},
+    {"fieldname": "section_totals", "fieldtype": "Section Break", "label": "Totals"},
+    {"fieldname": "total_charges", "fieldtype": "Currency", "label": "Total Charges", "reqd": 1, "read_only": 1},
+    {"fieldname": "advance_paid", "fieldtype": "Currency", "label": "Advance Paid", "read_only": 1},
+    {"fieldname": "col_break_2", "fieldtype": "Column Break"},
+    {"fieldname": "net_payable", "fieldtype": "Currency", "label": "Net Payable", "reqd": 1, "read_only": 1},
+    {"fieldname": "invoice", "fieldtype": "Link", "label": "Sales Invoice", "options": "Sales Invoice", "read_only": 1},
+    {"fieldname": "remarks", "fieldtype": "Small Text", "label": "Remarks"}
+  ],
+  "permissions": [
+    {"role": "Hotel Manager", "read": 1, "write": 1, "create": 1, "submit": 1, "cancel": 1},
+    {"role": "Hotel User", "read": 1, "write": 1, "submit": 1}
+  ],
+  "track_changes": 1
+}

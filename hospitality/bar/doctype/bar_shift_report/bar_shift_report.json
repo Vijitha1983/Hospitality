@@ -1,0 +1,33 @@
+{
+  "name": "Bar Shift Report",
+  "module": "Bar",
+  "doctype": "DocType",
+  "is_submittable": 1,
+  "autoname": "naming_series:",
+  "naming_series": "BSR-.YYYY.-.#####",
+  "title_field": "bartender",
+  "fields": [
+    {"fieldname": "report_date", "fieldtype": "Date", "label": "Date", "reqd": 1, "in_list_view": 1},
+    {"fieldname": "outlet", "fieldtype": "Link", "label": "Outlet", "reqd": 1, "options": "Outlet"},
+    {"fieldname": "shift_type", "fieldtype": "Select", "label": "Shift", "reqd": 1,
+      "options": "\nMorning\nEvening\nNight\nFull Day", "in_list_view": 1},
+    {"fieldname": "col_break_1", "fieldtype": "Column Break"},
+    {"fieldname": "bartender", "fieldtype": "Link", "label": "Bartender", "reqd": 1, "options": "Employee", "in_list_view": 1},
+    {"fieldname": "section_cash", "fieldtype": "Section Break", "label": "Cash Reconciliation"},
+    {"fieldname": "opening_cash", "fieldtype": "Currency", "label": "Opening Cash Float", "reqd": 1},
+    {"fieldname": "total_sales", "fieldtype": "Currency", "label": "Total Sales", "reqd": 1, "read_only": 1},
+    {"fieldname": "cash_collected", "fieldtype": "Currency", "label": "Cash Collected", "reqd": 1},
+    {"fieldname": "col_break_2", "fieldtype": "Column Break"},
+    {"fieldname": "card_collected", "fieldtype": "Currency", "label": "Card / UPI Collected"},
+    {"fieldname": "complimentary", "fieldtype": "Currency", "label": "Complimentary Value"},
+    {"fieldname": "voids", "fieldtype": "Currency", "label": "Voids Value"},
+    {"fieldname": "closing_cash", "fieldtype": "Currency", "label": "Closing Cash", "reqd": 1},
+    {"fieldname": "cash_variance", "fieldtype": "Currency", "label": "Cash Variance", "reqd": 1, "read_only": 1},
+    {"fieldname": "shift_notes", "fieldtype": "Text", "label": "Shift Notes"}
+  ],
+  "permissions": [
+    {"role": "Bar Manager", "read": 1, "write": 1, "create": 1, "submit": 1, "cancel": 1},
+    {"role": "Bar User", "read": 1, "write": 1, "create": 1, "submit": 1}
+  ],
+  "track_changes": 1
+}

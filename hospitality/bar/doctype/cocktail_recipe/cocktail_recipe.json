@@ -1,0 +1,31 @@
+{
+  "name": "Cocktail Recipe",
+  "module": "Bar",
+  "doctype": "DocType",
+  "is_submittable": 0,
+  "autoname": "field:recipe_name",
+  "title_field": "recipe_name",
+  "fields": [
+    {"fieldname": "recipe_name", "fieldtype": "Data", "label": "Recipe Name", "reqd": 1, "in_list_view": 1},
+    {"fieldname": "drink_menu_item", "fieldtype": "Link", "label": "Drink Menu Item", "reqd": 1, "options": "Drink Menu Item"},
+    {"fieldname": "col_break_1", "fieldtype": "Column Break"},
+    {"fieldname": "serves", "fieldtype": "Int", "label": "Serves", "reqd": 1, "default": "1"},
+    {"fieldname": "is_active", "fieldtype": "Check", "label": "Is Active", "default": "1"},
+    {"fieldname": "section_ingredients", "fieldtype": "Section Break", "label": "Ingredients"},
+    {"fieldname": "ingredients", "fieldtype": "Table", "label": "Ingredients", "reqd": 1, "options": "Cocktail Ingredient"},
+    {"fieldname": "section_method", "fieldtype": "Section Break", "label": "Method"},
+    {"fieldname": "method", "fieldtype": "Long Text", "label": "Preparation Method"},
+    {"fieldname": "glass_type", "fieldtype": "Data", "label": "Glass Type"},
+    {"fieldname": "garnish", "fieldtype": "Data", "label": "Garnish"},
+    {"fieldname": "col_break_2", "fieldtype": "Column Break"},
+    {"fieldname": "bom", "fieldtype": "Link", "label": "Bill of Materials", "options": "BOM", "read_only": 1},
+    {"fieldname": "cost_per_serve", "fieldtype": "Currency", "label": "Cost Per Serve", "read_only": 1},
+    {"fieldname": "selling_price", "fieldtype": "Currency", "label": "Selling Price", "read_only": 1},
+    {"fieldname": "gp_percent", "fieldtype": "Percent", "label": "GP %", "read_only": 1}
+  ],
+  "permissions": [
+    {"role": "Bar Manager", "read": 1, "write": 1, "create": 1, "delete": 1},
+    {"role": "Bar User", "read": 1}
+  ],
+  "track_changes": 1
+}

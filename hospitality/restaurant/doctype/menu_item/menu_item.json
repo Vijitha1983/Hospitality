@@ -1,0 +1,40 @@
+{
+  "name": "Menu Item",
+  "module": "Restaurant",
+  "doctype": "DocType",
+  "is_submittable": 0,
+  "autoname": "naming_series:",
+  "naming_series": "MENU-.#####",
+  "title_field": "item_name",
+  "search_fields": "item_name,category,kitchen_station",
+  "fields": [
+    {"fieldname": "item_name", "fieldtype": "Data", "label": "Item Name", "reqd": 1, "in_list_view": 1},
+    {"fieldname": "item_code", "fieldtype": "Link", "label": "ERPNext Item", "reqd": 1, "options": "Item"},
+    {"fieldname": "menu", "fieldtype": "Link", "label": "Food Menu", "reqd": 1, "options": "Food Menu"},
+    {"fieldname": "col_break_1", "fieldtype": "Column Break"},
+    {"fieldname": "category", "fieldtype": "Data", "label": "Category", "reqd": 1, "in_list_view": 1},
+    {"fieldname": "course", "fieldtype": "Select", "label": "Course",
+      "options": "\nStarter\nSoup\nSalad\nMain Course\nDessert\nBeverage\nSide"},
+    {"fieldname": "is_available", "fieldtype": "Check", "label": "Is Available", "default": "1", "in_list_view": 1},
+    {"fieldname": "section_pricing", "fieldtype": "Section Break", "label": "Pricing"},
+    {"fieldname": "price", "fieldtype": "Currency", "label": "Menu Price", "reqd": 1},
+    {"fieldname": "cost_price", "fieldtype": "Currency", "label": "Cost Price", "read_only": 1},
+    {"fieldname": "gross_profit_pct", "fieldtype": "Percent", "label": "Gross Profit %", "read_only": 1},
+    {"fieldname": "col_break_2", "fieldtype": "Column Break"},
+    {"fieldname": "bom", "fieldtype": "Link", "label": "Bill of Materials (Recipe)", "options": "BOM"},
+    {"fieldname": "kitchen_station", "fieldtype": "Select", "label": "Kitchen Station",
+      "options": "\nHot Kitchen\nCold Kitchen\nGrill\nTandoor\nDesserts\nBar"},
+    {"fieldname": "prep_time_mins", "fieldtype": "Int", "label": "Prep Time (mins)"},
+    {"fieldname": "section_dietary", "fieldtype": "Section Break", "label": "Dietary"},
+    {"fieldname": "is_veg", "fieldtype": "Check", "label": "Vegetarian"},
+    {"fieldname": "allergens", "fieldtype": "Data", "label": "Allergens"},
+    {"fieldname": "col_break_3", "fieldtype": "Column Break"},
+    {"fieldname": "description", "fieldtype": "Small Text", "label": "Description"},
+    {"fieldname": "image", "fieldtype": "Attach Image", "label": "Image"}
+  ],
+  "permissions": [
+    {"role": "Restaurant Manager", "read": 1, "write": 1, "create": 1, "delete": 1},
+    {"role": "Restaurant User", "read": 1}
+  ],
+  "track_changes": 1
+}

@@ -1,0 +1,21 @@
+{
+  "name": "Table Section",
+  "module": "Restaurant",
+  "doctype": "DocType",
+  "is_submittable": 0,
+  "autoname": "field:section_name",
+  "title_field": "section_name",
+  "fields": [
+    {"fieldname": "section_name", "fieldtype": "Data", "label": "Section Name", "reqd": 1, "in_list_view": 1},
+    {"fieldname": "outlet", "fieldtype": "Link", "label": "Outlet", "reqd": 1, "options": "Outlet", "in_list_view": 1},
+    {"fieldname": "col_break_1", "fieldtype": "Column Break"},
+    {"fieldname": "capacity", "fieldtype": "Int", "label": "Total Capacity"},
+    {"fieldname": "is_active", "fieldtype": "Check", "label": "Is Active", "default": "1"},
+    {"fieldname": "is_ac", "fieldtype": "Check", "label": "Air Conditioned"},
+    {"fieldname": "is_smoking", "fieldtype": "Check", "label": "Smoking Area"}
+  ],
+  "permissions": [
+    {"role": "Restaurant Manager", "read": 1, "write": 1, "create": 1, "delete": 1},
+    {"role": "Restaurant User", "read": 1}
+  ]
+}

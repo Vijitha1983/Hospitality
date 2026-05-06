@@ -1,0 +1,32 @@
+{
+  "name": "Advance Deposit",
+  "module": "Hotel",
+  "doctype": "DocType",
+  "is_submittable": 1,
+  "autoname": "naming_series:",
+  "naming_series": "AD-.YYYY.-.#####",
+  "title_field": "booking",
+  "fields": [
+    {"fieldname": "booking", "fieldtype": "Link", "label": "Booking", "reqd": 1, "options": "Hotel Booking", "in_list_view": 1},
+    {"fieldname": "guest", "fieldtype": "Link", "label": "Guest", "reqd": 1, "options": "Guest", "read_only": 1, "in_list_view": 1},
+    {"fieldname": "col_break_1", "fieldtype": "Column Break"},
+    {"fieldname": "deposit_date", "fieldtype": "Date", "label": "Deposit Date", "reqd": 1},
+    {"fieldname": "status", "fieldtype": "Select", "label": "Status", "reqd": 1, "in_list_view": 1,
+      "options": "Received\nAdjusted\nRefunded\nForfeited", "default": "Received"},
+    {"fieldname": "section_payment", "fieldtype": "Section Break", "label": "Payment"},
+    {"fieldname": "amount", "fieldtype": "Currency", "label": "Amount", "reqd": 1, "in_list_view": 1},
+    {"fieldname": "payment_mode", "fieldtype": "Select", "label": "Payment Mode", "reqd": 1,
+      "options": "\nCash\nCredit Card\nBank Transfer\nUPI\nCheque"},
+    {"fieldname": "col_break_2", "fieldtype": "Column Break"},
+    {"fieldname": "reference_no", "fieldtype": "Data", "label": "Reference / UTR No"},
+    {"fieldname": "payment_entry", "fieldtype": "Link", "label": "Payment Entry", "options": "Payment Entry", "read_only": 1},
+    {"fieldname": "section_refund", "fieldtype": "Section Break", "label": "Refund", "depends_on": "eval:doc.status === 'Refunded'"},
+    {"fieldname": "refund_amount", "fieldtype": "Currency", "label": "Refund Amount"},
+    {"fieldname": "refund_date", "fieldtype": "Date", "label": "Refund Date"}
+  ],
+  "permissions": [
+    {"role": "Hotel Manager", "read": 1, "write": 1, "create": 1, "submit": 1, "cancel": 1},
+    {"role": "Hotel User", "read": 1, "write": 1, "create": 1, "submit": 1}
+  ],
+  "track_changes": 1
+}

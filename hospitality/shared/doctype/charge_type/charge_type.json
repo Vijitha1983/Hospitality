@@ -1,0 +1,25 @@
+{
+  "name": "Charge Type",
+  "module": "Shared",
+  "doctype": "DocType",
+  "is_submittable": 0,
+  "autoname": "field:charge_name",
+  "title_field": "charge_name",
+  "fields": [
+    {"fieldname": "charge_name", "fieldtype": "Data", "label": "Charge Name", "reqd": 1, "in_list_view": 1},
+    {"fieldname": "charge_category", "fieldtype": "Select", "label": "Charge Category", "reqd": 1, "in_list_view": 1,
+      "options": "\nRoom\nFood and Beverage\nSpa\nLaundry\nTelephone\nMinibar\nTransport\nMiscellaneous"},
+    {"fieldname": "col_break_1", "fieldtype": "Column Break"},
+    {"fieldname": "default_income_account", "fieldtype": "Link", "label": "Default Income Account", "reqd": 1, "options": "Account"},
+    {"fieldname": "is_active", "fieldtype": "Check", "label": "Is Active", "default": "1"},
+    {"fieldname": "section_tax", "fieldtype": "Section Break", "label": "Tax"},
+    {"fieldname": "is_taxable", "fieldtype": "Check", "label": "Is Taxable", "default": "1"},
+    {"fieldname": "tax_template", "fieldtype": "Link", "label": "Tax Template",
+      "options": "Sales Taxes and Charges Template", "depends_on": "is_taxable"}
+  ],
+  "permissions": [
+    {"role": "Hotel Manager", "read": 1, "write": 1, "create": 1, "delete": 1},
+    {"role": "System Manager", "read": 1, "write": 1, "create": 1, "delete": 1},
+    {"role": "Hotel User", "read": 1}
+  ]
+}

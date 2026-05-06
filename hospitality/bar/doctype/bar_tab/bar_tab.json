@@ -1,0 +1,37 @@
+{
+  "name": "Bar Tab",
+  "module": "Bar",
+  "doctype": "DocType",
+  "is_submittable": 1,
+  "autoname": "naming_series:",
+  "naming_series": "TAB-.YYYY.-.#####",
+  "title_field": "tab_no",
+  "fields": [
+    {"fieldname": "tab_no", "fieldtype": "Data", "label": "Tab No", "read_only": 1, "in_list_view": 1},
+    {"fieldname": "outlet", "fieldtype": "Link", "label": "Outlet", "reqd": 1, "options": "Outlet", "in_list_view": 1},
+    {"fieldname": "tab_type", "fieldtype": "Select", "label": "Tab Type", "reqd": 1,
+      "options": "\nTable Tab\nCounter Tab\nRoom Service Tab\nEvent Tab"},
+    {"fieldname": "col_break_1", "fieldtype": "Column Break"},
+    {"fieldname": "table", "fieldtype": "Link", "label": "Table", "options": "Dining Table",
+      "depends_on": "eval:doc.tab_type==='Table Tab'"},
+    {"fieldname": "guest", "fieldtype": "Link", "label": "Guest", "options": "Guest"},
+    {"fieldname": "guest_name", "fieldtype": "Data", "label": "Walk-in Guest Name"},
+    {"fieldname": "section_timing", "fieldtype": "Section Break", "label": "Timing"},
+    {"fieldname": "open_time", "fieldtype": "Datetime", "label": "Opened At", "reqd": 1},
+    {"fieldname": "close_time", "fieldtype": "Datetime", "label": "Closed At"},
+    {"fieldname": "col_break_2", "fieldtype": "Column Break"},
+    {"fieldname": "bartender", "fieldtype": "Link", "label": "Bartender", "options": "Employee"},
+    {"fieldname": "status", "fieldtype": "Select", "label": "Status", "reqd": 1, "in_list_view": 1,
+      "options": "Open\nBilled\nSettled\nCancelled", "default": "Open"},
+    {"fieldname": "section_totals", "fieldtype": "Section Break", "label": "Totals"},
+    {"fieldname": "total_amount", "fieldtype": "Currency", "label": "Total Amount", "reqd": 1, "read_only": 1},
+    {"fieldname": "pos_invoice", "fieldtype": "Link", "label": "POS Invoice", "options": "POS Invoice", "read_only": 1},
+    {"fieldname": "folio", "fieldtype": "Link", "label": "Guest Folio", "options": "Guest Folio",
+      "depends_on": "eval:doc.tab_type==='Room Service Tab'"}
+  ],
+  "permissions": [
+    {"role": "Bar Manager", "read": 1, "write": 1, "create": 1, "submit": 1, "cancel": 1},
+    {"role": "Bar User", "read": 1, "write": 1, "create": 1, "submit": 1}
+  ],
+  "track_changes": 1
+}
