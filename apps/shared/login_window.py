@@ -21,6 +21,7 @@ from PyQt6.QtCore import Qt, QThread, pyqtSignal, QPropertyAnimation, QEasingCur
 from PyQt6.QtGui import QFont, QColor, QPalette, QIcon
 
 from shared.frappe_client import login_with_password, APIError, save_credentials, load_credentials
+from shared.config import DEFAULT_SERVER_URL
 
 # ── Palette ───────────────────────────────────────────────────────────────────
 BG       = "#0f0f1a"
@@ -240,6 +241,8 @@ class LoginWindow(QDialog):
             self._url_edit.setText(creds.get("url", ""))
             self._user_edit.setText(creds.get("username", ""))
             self._pass_edit.setText(creds.get("password", ""))
+        elif DEFAULT_SERVER_URL and DEFAULT_SERVER_URL != "https://":
+            self._url_edit.setText(DEFAULT_SERVER_URL)
 
     def _do_login(self):
         url  = self._url_edit.text().strip()
