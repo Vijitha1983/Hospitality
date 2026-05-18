@@ -1,0 +1,9 @@
+# Shared dependencies for all three apps
+requests>=2.31.0
+
+# Hotel Desk + Restaurant POS (Windows)
+PyQt6>=6.6.0
+
+# Table Order (Android/tablet) — install only on mobile target
+# kivy>=2.3.0
+# buildozer>=1.5.0   # for Android packaging
