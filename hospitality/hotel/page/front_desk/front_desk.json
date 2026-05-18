@@ -1,0 +1,13 @@
+{
+  "doctype": "Page",
+  "module": "Hotel",
+  "name": "front-desk",
+  "page_name": "front-desk",
+  "title": "Front Desk",
+  "system_page": 0,
+  "roles": [
+    {"role": "Hotel Manager"},
+    {"role": "Hotel User"},
+    {"role": "System Manager"}
+  ]
+}

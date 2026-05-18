@@ -1,0 +1,123 @@
+{%- set company = frappe.get_doc("Company", frappe.defaults.get_user_default("Company")) -%}
+{%- set orders = frappe.get_all("Bar Order",
+    filters={"tab": doc.name, "docstatus": 1, "status": ["!=", "Cancelled"]},
+    fields=["name"]) -%}
+<style>
+  .bill-wrap { font-family: Arial, sans-serif; font-size: 11pt; max-width: 320px; margin: 0 auto; }
+  .bill-header { text-align: center; border-bottom: 2px solid #8b1a1a; padding-bottom: 10px; margin-bottom: 14px; }
+  .bill-header h1 { margin: 0 0 3px; font-size: 16pt; color: #8b1a1a; }
+  .bill-header p { margin: 2px 0; font-size: 8.5pt; color: #555; }
+  .bill-title { font-size: 12pt; font-weight: bold; text-align: center; margin-bottom: 12px; color: #8b1a1a; }
+  .meta { margin-bottom: 10px; font-size: 9.5pt; }
+  .meta tr td:first-child { color: #666; padding-right: 8px; }
+  .meta tr td:last-child { font-weight: bold; }
+  hr { border: none; border-top: 1px dashed #aaa; margin: 8px 0; }
+  table.items { width: 100%; border-collapse: collapse; margin-bottom: 10px; }
+  table.items thead th { font-size: 9pt; border-bottom: 1px solid #888; padding: 3px 4px; text-align: left; }
+  table.items tbody td { padding: 4px 4px; font-size: 10pt; border-bottom: 1px solid #eee; }
+  .td-right { text-align: right; }
+  .totals { margin-left: auto; width: 200px; }
+  .totals table td { padding: 3px 4px; font-size: 10pt; }
+  .totals .grand td { font-weight: bold; font-size: 12pt; border-top: 2px solid #8b1a1a; color: #8b1a1a; padding-top: 5px; }
+  .compl { color: #888; font-style: italic; }
+  .footer { text-align: center; font-size: 8.5pt; color: #888; margin-top: 14px; }
+</style>
+
+<div class="bill-wrap">
+  <div class="bill-header">
+    {% if company %}
+      <h1>{{ company.company_name }}</h1>
+      <p>{{ company.address or "" }}</p>
+    {% endif %}
+    <p><strong>BAR BILL</strong></p>
+  </div>
+
+  <div class="bill-title">Tab: {{ doc.tab_no or doc.name }}</div>
+
+  <table class="meta">
+    <tr>
+      <td>Guest</td>
+      <td>{{ doc.guest_name or "Walk-in" }}</td>
+    </tr>
+    <tr>
+      <td>Outlet</td>
+      <td>{{ doc.outlet }}</td>
+    </tr>
+    <tr>
+      <td>Bartender</td>
+      <td>{{ doc.bartender or "&mdash;" }}</td>
+    </tr>
+    <tr>
+      <td>Opened</td>
+      <td>{{ frappe.format(doc.open_time, "Datetime") }}</td>
+    </tr>
+    <tr>
+      <td>Closed</td>
+      <td>{{ frappe.format(doc.close_time, "Datetime") if doc.close_time else "&mdash;" }}</td>
+    </tr>
+  </table>
+
+  <hr>
+
+  <table class="items">
+    <thead>
+      <tr>
+        <th>Item</th>
+        <th class="td-right">Qty</th>
+        <th class="td-right">Rate</th>
+        <th class="td-right">Amount</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% set ns = namespace(subtotal=0) %}
+      {% for o in orders %}
+        {% set order_doc = frappe.get_doc("Bar Order", o.name) %}
+        {% for item in order_doc.items %}
+          {% set ns.subtotal = ns.subtotal + (item.amount or 0) %}
+          <tr>
+            <td>
+              {{ frappe.db.get_value("Drink Menu Item", item.drink_item, "item_name") or item.drink_item }}
+              {% if item.is_complimentary %}<br><span class="compl">(Complimentary)</span>{% endif %}
+              {% if item.special_instructions %}<br><small>{{ item.special_instructions }}</small>{% endif %}
+            </td>
+            <td class="td-right">{{ item.qty }}</td>
+            <td class="td-right">{{ frappe.format(item.rate, "Currency") }}</td>
+            <td class="td-right {% if item.is_complimentary %}compl{% endif %}">
+              {{ frappe.format(item.amount, "Currency") }}
+            </td>
+          </tr>
+        {% endfor %}
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <div class="totals">
+    <table>
+      <tr>
+        <td>Subtotal</td>
+        <td class="td-right">{{ frappe.format(ns.subtotal, "Currency") }}</td>
+      </tr>
+      {% if doc.tax_amount %}
+      <tr>
+        <td>Tax</td>
+        <td class="td-right">{{ frappe.format(doc.tax_amount, "Currency") }}</td>
+      </tr>
+      {% endif %}
+      <tr class="grand">
+        <td>Total</td>
+        <td class="td-right">{{ frappe.format(doc.total_amount, "Currency") }}</td>
+      </tr>
+    </table>
+  </div>
+
+  {% if doc.pos_invoice %}
+  <p style="font-size:9pt; margin-top:10px; text-align:center; color:#555">
+    Invoice: <strong>{{ doc.pos_invoice }}</strong>
+  </p>
+  {% endif %}
+
+  <div class="footer">
+    Printed: {{ frappe.format(frappe.utils.now_datetime(), "Datetime") }}<br>
+    Thank you for your visit!
+  </div>
+</div>

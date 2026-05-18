@@ -1,0 +1,10 @@
+{
+  "name": "Folio Bill",
+  "doctype": "Print Format",
+  "doc_type": "Guest Folio",
+  "module": "Hotel",
+  "standard": "Yes",
+  "custom_format": 0,
+  "print_format_type": "Jinja",
+  "disabled": 0
+}

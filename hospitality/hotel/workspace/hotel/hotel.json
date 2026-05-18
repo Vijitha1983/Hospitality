@@ -1,0 +1,189 @@
+{
+  "doctype": "Workspace",
+  "module": "Hotel",
+  "name": "Hotel",
+  "label": "Hotel",
+  "icon": "octicon octicon-home",
+  "is_default": 1,
+  "is_standard": 1,
+  "public": 1,
+  "charts": [],
+  "shortcuts": [
+    {
+      "color": "Blue",
+      "format": "{} Bookings",
+      "label": "Hotel Booking",
+      "stats_filter": "{\"status\": \"Confirmed\"}",
+      "type": "DocType",
+      "doc_view": "List"
+    },
+    {
+      "color": "Green",
+      "label": "Hotel Check-in",
+      "type": "DocType",
+      "doc_view": "New"
+    },
+    {
+      "color": "Orange",
+      "label": "Guest Folio",
+      "type": "DocType",
+      "doc_view": "List"
+    },
+    {
+      "color": "Purple",
+      "label": "Housekeeping Task",
+      "type": "DocType",
+      "doc_view": "List"
+    }
+  ],
+  "links": [
+    {
+      "hidden": 0,
+      "label": "Reservations",
+      "type": "Card Break"
+    },
+    {
+      "hidden": 0,
+      "is_query_report": 0,
+      "label": "Hotel Booking",
+      "link_count": 0,
+      "link_to": "Hotel Booking",
+      "link_type": "DocType",
+      "onboard": 1,
+      "type": "Link"
+    },
+    {
+      "hidden": 0,
+      "is_query_report": 0,
+      "label": "Hotel Check-in",
+      "link_count": 0,
+      "link_to": "Hotel Check-in",
+      "link_type": "DocType",
+      "onboard": 1,
+      "type": "Link"
+    },
+    {
+      "hidden": 0,
+      "is_query_report": 0,
+      "label": "Hotel Check-out",
+      "link_count": 0,
+      "link_to": "Hotel Check-out",
+      "link_type": "DocType",
+      "onboard": 1,
+      "type": "Link"
+    },
+    {
+      "hidden": 0,
+      "is_query_report": 0,
+      "label": "Advance Deposit",
+      "link_count": 0,
+      "link_to": "Advance Deposit",
+      "link_type": "DocType",
+      "type": "Link"
+    },
+    {
+      "hidden": 0,
+      "label": "Folio & Billing",
+      "type": "Card Break"
+    },
+    {
+      "hidden": 0,
+      "is_query_report": 0,
+      "label": "Guest Folio",
+      "link_count": 0,
+      "link_to": "Guest Folio",
+      "link_type": "DocType",
+      "onboard": 1,
+      "type": "Link"
+    },
+    {
+      "hidden": 0,
+      "is_query_report": 0,
+      "label": "Folio Posting",
+      "link_count": 0,
+      "link_to": "Folio Posting",
+      "link_type": "DocType",
+      "type": "Link"
+    },
+    {
+      "hidden": 0,
+      "label": "Configuration",
+      "type": "Card Break"
+    },
+    {
+      "hidden": 0,
+      "is_query_report": 0,
+      "label": "Room",
+      "link_count": 0,
+      "link_to": "Room",
+      "link_type": "DocType",
+      "onboard": 1,
+      "type": "Link"
+    },
+    {
+      "hidden": 0,
+      "is_query_report": 0,
+      "label": "Room Type",
+      "link_count": 0,
+      "link_to": "Room Type",
+      "link_type": "DocType",
+      "onboard": 1,
+      "type": "Link"
+    },
+    {
+      "hidden": 0,
+      "is_query_report": 0,
+      "label": "Rate Plan",
+      "link_count": 0,
+      "link_to": "Rate Plan",
+      "link_type": "DocType",
+      "type": "Link"
+    },
+    {
+      "hidden": 0,
+      "label": "Housekeeping",
+      "type": "Card Break"
+    },
+    {
+      "hidden": 0,
+      "is_query_report": 0,
+      "label": "Housekeeping Task",
+      "link_count": 0,
+      "link_to": "Housekeeping Task",
+      "link_type": "DocType",
+      "type": "Link"
+    },
+    {
+      "hidden": 0,
+      "label": "Reports",
+      "type": "Card Break"
+    },
+    {
+      "hidden": 0,
+      "is_query_report": 1,
+      "label": "Occupancy Report",
+      "link_count": 0,
+      "link_to": "Occupancy Report",
+      "link_type": "Report",
+      "type": "Link"
+    },
+    {
+      "hidden": 0,
+      "is_query_report": 1,
+      "label": "Revenue Report",
+      "link_count": 0,
+      "link_to": "Revenue Report",
+      "link_type": "Report",
+      "type": "Link"
+    },
+    {
+      "hidden": 0,
+      "is_query_report": 1,
+      "label": "Arrival Departure Report",
+      "link_count": 0,
+      "link_to": "Arrival Departure Report",
+      "link_type": "Report",
+      "type": "Link"
+    }
+  ]
+}

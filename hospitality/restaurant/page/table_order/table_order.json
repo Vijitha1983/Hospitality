@@ -1,0 +1,14 @@
+{
+  "doctype": "Page",
+  "module": "Restaurant",
+  "name": "table-order",
+  "page_name": "table-order",
+  "title": "Table Order",
+  "system_page": 0,
+  "roles": [
+    {"role": "Restaurant Manager"},
+    {"role": "Restaurant User"},
+    {"role": "Steward"},
+    {"role": "System Manager"}
+  ]
+}

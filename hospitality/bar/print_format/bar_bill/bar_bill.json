@@ -1,0 +1,10 @@
+{
+  "name": "Bar Bill",
+  "doctype": "Print Format",
+  "doc_type": "Bar Tab",
+  "module": "Bar",
+  "standard": "Yes",
+  "custom_format": 0,
+  "print_format_type": "Jinja",
+  "disabled": 0
+}

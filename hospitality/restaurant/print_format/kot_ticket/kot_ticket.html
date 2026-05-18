@@ -1,0 +1,80 @@
+<style>
+  /* Designed for 80mm thermal printer */
+  .kot-wrap { font-family: "Courier New", monospace; font-size: 11pt; width: 72mm; margin: 0 auto; }
+  .kot-header { text-align: center; border-bottom: 2px dashed #000; padding-bottom: 6px; margin-bottom: 8px; }
+  .kot-header h2 { margin: 0 0 2px; font-size: 15pt; letter-spacing: 2px; }
+  .kot-header .sub { font-size: 9pt; }
+  .kot-meta { margin-bottom: 8px; font-size: 10pt; }
+  .kot-meta tr td:first-child { font-weight: bold; padding-right: 6px; }
+  .kot-divider { border: none; border-top: 1px dashed #000; margin: 6px 0; }
+  .kot-items { width: 100%; border-collapse: collapse; }
+  .kot-items th { font-size: 9pt; border-bottom: 1px solid #000; padding: 2px 0; text-align: left; }
+  .kot-items td { padding: 3px 0; font-size: 11pt; vertical-align: top; }
+  .kot-items .qty { width: 24px; font-weight: bold; font-size: 13pt; }
+  .kot-items .item { padding-left: 6px; }
+  .kot-items .modifier { font-size: 9pt; color: #444; padding-left: 30px; }
+  .kot-items .note { font-size: 9pt; font-style: italic; padding-left: 30px; }
+  .kot-footer { text-align: center; margin-top: 10px; font-size: 9pt; border-top: 1px dashed #000; padding-top: 6px; }
+  .station-badge { display: block; text-align: center; font-size: 13pt; font-weight: bold;
+    border: 2px solid #000; padding: 3px 8px; margin-bottom: 8px; letter-spacing: 1px; }
+</style>
+
+<div class="kot-wrap">
+  <div class="kot-header">
+    <h2>KOT</h2>
+    <div class="sub">Kitchen Order Ticket</div>
+  </div>
+
+  <span class="station-badge">{{ doc.kitchen_station | upper }}</span>
+
+  <table class="kot-meta">
+    <tr>
+      <td>KOT #</td>
+      <td>{{ doc.name }}</td>
+    </tr>
+    <tr>
+      <td>Order</td>
+      <td>{{ doc.restaurant_order }}</td>
+    </tr>
+    <tr>
+      <td>Table</td>
+      <td>{{ doc.table or "&mdash;" }}</td>
+    </tr>
+    <tr>
+      <td>Outlet</td>
+      <td>{{ doc.outlet }}</td>
+    </tr>
+    <tr>
+      <td>Fired At</td>
+      <td>{{ frappe.format(doc.fired_at, "Datetime") }}</td>
+    </tr>
+  </table>
+
+  <hr class="kot-divider">
+
+  <table class="kot-items">
+    <thead>
+      <tr>
+        <th class="qty">Qty</th>
+        <th class="item">Item</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for item in doc.items %}
+      <tr>
+        <td class="qty">{{ item.qty }}</td>
+        <td class="item">
+          {{ item.item_name }}
+          {% if item.course %}<br><span class="modifier">Course: {{ item.course }}</span>{% endif %}
+          {% if item.modifiers %}<br><span class="modifier">{{ item.modifiers }}</span>{% endif %}
+          {% if item.special_instructions %}<br><span class="note">&#9656; {{ item.special_instructions }}</span>{% endif %}
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <div class="kot-footer">
+    Printed: {{ frappe.format(frappe.utils.now_datetime(), "Datetime") }}
+  </div>
+</div>

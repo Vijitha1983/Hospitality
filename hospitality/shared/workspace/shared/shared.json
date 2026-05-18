@@ -1,0 +1,83 @@
+{
+  "doctype": "Workspace",
+  "module": "Shared",
+  "name": "Hospitality Settings",
+  "label": "Hospitality Settings",
+  "icon": "octicon octicon-gear",
+  "is_default": 1,
+  "is_standard": 1,
+  "public": 1,
+  "charts": [],
+  "shortcuts": [
+    {
+      "color": "Blue",
+      "label": "Guest",
+      "type": "DocType",
+      "doc_view": "List"
+    },
+    {
+      "color": "Green",
+      "label": "Outlet",
+      "type": "DocType",
+      "doc_view": "List"
+    },
+    {
+      "color": "Orange",
+      "label": "Hospitality Settings",
+      "type": "DocType",
+      "doc_view": "Form"
+    }
+  ],
+  "links": [
+    {
+      "hidden": 0,
+      "label": "Master Data",
+      "type": "Card Break"
+    },
+    {
+      "hidden": 0,
+      "is_query_report": 0,
+      "label": "Guest",
+      "link_count": 0,
+      "link_to": "Guest",
+      "link_type": "DocType",
+      "onboard": 1,
+      "type": "Link"
+    },
+    {
+      "hidden": 0,
+      "is_query_report": 0,
+      "label": "Outlet",
+      "link_count": 0,
+      "link_to": "Outlet",
+      "link_type": "DocType",
+      "onboard": 1,
+      "type": "Link"
+    },
+    {
+      "hidden": 0,
+      "is_query_report": 0,
+      "label": "Charge Type",
+      "link_count": 0,
+      "link_to": "Charge Type",
+      "link_type": "DocType",
+      "onboard": 1,
+      "type": "Link"
+    },
+    {
+      "hidden": 0,
+      "label": "Settings",
+      "type": "Card Break"
+    },
+    {
+      "hidden": 0,
+      "is_query_report": 0,
+      "label": "Hospitality Settings",
+      "link_count": 0,
+      "link_to": "Hospitality Settings",
+      "link_type": "DocType",
+      "onboard": 1,
+      "type": "Link"
+    }
+  ]
+}

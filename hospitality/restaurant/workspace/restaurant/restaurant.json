@@ -1,0 +1,154 @@
+{
+  "doctype": "Workspace",
+  "module": "Restaurant",
+  "name": "Restaurant",
+  "label": "Restaurant",
+  "icon": "octicon octicon-fork",
+  "is_default": 1,
+  "is_standard": 1,
+  "public": 1,
+  "charts": [],
+  "shortcuts": [
+    {
+      "color": "Green",
+      "label": "Restaurant Order",
+      "type": "DocType",
+      "doc_view": "New"
+    },
+    {
+      "color": "Blue",
+      "label": "Table Reservation",
+      "type": "DocType",
+      "doc_view": "List"
+    },
+    {
+      "color": "Orange",
+      "label": "KOT",
+      "type": "DocType",
+      "doc_view": "List"
+    },
+    {
+      "color": "Purple",
+      "label": "Restaurant POS",
+      "type": "Page"
+    }
+  ],
+  "links": [
+    {
+      "hidden": 0,
+      "label": "Operations",
+      "type": "Card Break"
+    },
+    {
+      "hidden": 0,
+      "is_query_report": 0,
+      "label": "Restaurant Order",
+      "link_count": 0,
+      "link_to": "Restaurant Order",
+      "link_type": "DocType",
+      "onboard": 1,
+      "type": "Link"
+    },
+    {
+      "hidden": 0,
+      "is_query_report": 0,
+      "label": "KOT",
+      "link_count": 0,
+      "link_to": "KOT",
+      "link_type": "DocType",
+      "onboard": 1,
+      "type": "Link"
+    },
+    {
+      "hidden": 0,
+      "is_query_report": 0,
+      "label": "Table Reservation",
+      "link_count": 0,
+      "link_to": "Table Reservation",
+      "link_type": "DocType",
+      "onboard": 1,
+      "type": "Link"
+    },
+    {
+      "hidden": 0,
+      "label": "POS",
+      "type": "Card Break"
+    },
+    {
+      "hidden": 0,
+      "is_query_report": 0,
+      "label": "Restaurant POS",
+      "link_count": 0,
+      "link_to": "restaurant-pos",
+      "link_type": "Page",
+      "onboard": 1,
+      "type": "Link"
+    },
+    {
+      "hidden": 0,
+      "is_query_report": 0,
+      "label": "Table Order",
+      "link_count": 0,
+      "link_to": "table-order",
+      "link_type": "Page",
+      "type": "Link"
+    },
+    {
+      "hidden": 0,
+      "label": "Configuration",
+      "type": "Card Break"
+    },
+    {
+      "hidden": 0,
+      "is_query_report": 0,
+      "label": "Dining Table",
+      "link_count": 0,
+      "link_to": "Dining Table",
+      "link_type": "DocType",
+      "onboard": 1,
+      "type": "Link"
+    },
+    {
+      "hidden": 0,
+      "is_query_report": 0,
+      "label": "Table Section",
+      "link_count": 0,
+      "link_to": "Table Section",
+      "link_type": "DocType",
+      "type": "Link"
+    },
+    {
+      "hidden": 0,
+      "is_query_report": 0,
+      "label": "Food Menu",
+      "link_count": 0,
+      "link_to": "Food Menu",
+      "link_type": "DocType",
+      "onboard": 1,
+      "type": "Link"
+    },
+    {
+      "hidden": 0,
+      "is_query_report": 0,
+      "label": "Menu Item",
+      "link_count": 0,
+      "link_to": "Menu Item",
+      "link_type": "DocType",
+      "type": "Link"
+    },
+    {
+      "hidden": 0,
+      "label": "Reports",
+      "type": "Card Break"
+    },
+    {
+      "hidden": 0,
+      "is_query_report": 1,
+      "label": "Food Cost Report",
+      "link_count": 0,
+      "link_to": "Food Cost Report",
+      "link_type": "Report",
+      "type": "Link"
+    }
+  ]
+}

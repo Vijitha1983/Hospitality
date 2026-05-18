@@ -1,0 +1,13 @@
+{
+  "doctype": "Page",
+  "module": "Restaurant",
+  "name": "restaurant-pos",
+  "page_name": "restaurant-pos",
+  "title": "Restaurant POS",
+  "system_page": 0,
+  "roles": [
+    {"role": "Restaurant Manager"},
+    {"role": "Restaurant User"},
+    {"role": "System Manager"}
+  ]
+}

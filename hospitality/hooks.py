@@ -66,4 +66,5 @@ fixtures = [
     "Role",
     {"dt": "Charge Type"},
     {"dt": "Print Format", "filters": [["module", "in", ["Hotel", "Restaurant", "Bar", "Shared"]]]},
+    {"dt": "Workspace", "filters": [["module", "in", ["Hotel", "Restaurant", "Bar", "Shared"]]]},
 ]

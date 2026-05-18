@@ -1,0 +1,153 @@
+{
+  "doctype": "Workspace",
+  "module": "Bar",
+  "name": "Bar",
+  "label": "Bar",
+  "icon": "octicon octicon-kebab-vertical",
+  "is_default": 1,
+  "is_standard": 1,
+  "public": 1,
+  "charts": [],
+  "shortcuts": [
+    {
+      "color": "Red",
+      "label": "Bar POS",
+      "type": "Page"
+    },
+    {
+      "color": "Blue",
+      "label": "Bar Tab",
+      "type": "DocType",
+      "doc_view": "List"
+    },
+    {
+      "color": "Orange",
+      "label": "Bar Order",
+      "type": "DocType",
+      "doc_view": "List"
+    },
+    {
+      "color": "Purple",
+      "label": "Excise Register",
+      "type": "DocType",
+      "doc_view": "List"
+    }
+  ],
+  "links": [
+    {
+      "hidden": 0,
+      "label": "Operations",
+      "type": "Card Break"
+    },
+    {
+      "hidden": 0,
+      "is_query_report": 0,
+      "label": "Bar POS",
+      "link_count": 0,
+      "link_to": "bar-pos",
+      "link_type": "Page",
+      "onboard": 1,
+      "type": "Link"
+    },
+    {
+      "hidden": 0,
+      "is_query_report": 0,
+      "label": "Bar Tab",
+      "link_count": 0,
+      "link_to": "Bar Tab",
+      "link_type": "DocType",
+      "onboard": 1,
+      "type": "Link"
+    },
+    {
+      "hidden": 0,
+      "is_query_report": 0,
+      "label": "Bar Order",
+      "link_count": 0,
+      "link_to": "Bar Order",
+      "link_type": "DocType",
+      "onboard": 1,
+      "type": "Link"
+    },
+    {
+      "hidden": 0,
+      "is_query_report": 0,
+      "label": "BOT",
+      "link_count": 0,
+      "link_to": "BOT",
+      "link_type": "DocType",
+      "type": "Link"
+    },
+    {
+      "hidden": 0,
+      "label": "Inventory & Compliance",
+      "type": "Card Break"
+    },
+    {
+      "hidden": 0,
+      "is_query_report": 0,
+      "label": "Liquor Stock Entry",
+      "link_count": 0,
+      "link_to": "Liquor Stock Entry",
+      "link_type": "DocType",
+      "onboard": 1,
+      "type": "Link"
+    },
+    {
+      "hidden": 0,
+      "is_query_report": 0,
+      "label": "Excise Register",
+      "link_count": 0,
+      "link_to": "Excise Register",
+      "link_type": "DocType",
+      "type": "Link"
+    },
+    {
+      "hidden": 0,
+      "is_query_report": 0,
+      "label": "Bar Shift Report",
+      "link_count": 0,
+      "link_to": "Bar Shift Report",
+      "link_type": "DocType",
+      "type": "Link"
+    },
+    {
+      "hidden": 0,
+      "label": "Configuration",
+      "type": "Card Break"
+    },
+    {
+      "hidden": 0,
+      "is_query_report": 0,
+      "label": "Drink Menu Item",
+      "link_count": 0,
+      "link_to": "Drink Menu Item",
+      "link_type": "DocType",
+      "onboard": 1,
+      "type": "Link"
+    },
+    {
+      "hidden": 0,
+      "is_query_report": 0,
+      "label": "Cocktail Recipe",
+      "link_count": 0,
+      "link_to": "Cocktail Recipe",
+      "link_type": "DocType",
+      "type": "Link"
+    },
+    {
+      "hidden": 0,
+      "label": "Reports",
+      "type": "Card Break"
+    },
+    {
+      "hidden": 0,
+      "is_query_report": 1,
+      "label": "Bar Variance Report",
+      "link_count": 0,
+      "link_to": "Bar Variance Report",
+      "link_type": "Report",
+      "type": "Link"
+    }
+  ]
+}

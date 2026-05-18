@@ -1,0 +1,115 @@
+{%- set settings = frappe.get_single("Hospitality Settings") -%}
+{%- set company = frappe.get_doc("Company", doc.company) if doc.company else None -%}
+<style>
+  .folio-wrap { font-family: Arial, sans-serif; font-size: 11pt; color: #222; max-width: 700px; margin: 0 auto; }
+  .folio-header { text-align: center; border-bottom: 2px solid #1a3c5e; padding-bottom: 12px; margin-bottom: 18px; }
+  .folio-header h1 { margin: 0 0 4px; font-size: 20pt; color: #1a3c5e; }
+  .folio-header p { margin: 2px 0; font-size: 9pt; color: #555; }
+  .folio-title { font-size: 14pt; font-weight: bold; color: #1a3c5e; margin-bottom: 14px; }
+  .meta-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6px 20px; margin-bottom: 18px; font-size: 10pt; }
+  .meta-grid .label { color: #666; }
+  .meta-grid .value { font-weight: bold; }
+  table { width: 100%; border-collapse: collapse; margin-bottom: 14px; }
+  thead th { background: #1a3c5e; color: #fff; padding: 7px 10px; text-align: left; font-size: 10pt; }
+  tbody tr:nth-child(even) { background: #f5f7fa; }
+  tbody td { padding: 6px 10px; border-bottom: 1px solid #e0e4ea; font-size: 10pt; }
+  .td-right { text-align: right; }
+  .totals-box { margin-left: auto; width: 260px; }
+  .totals-box table td { border: none; padding: 4px 10px; }
+  .totals-box .grand-total td { font-weight: bold; font-size: 12pt; border-top: 2px solid #1a3c5e; color: #1a3c5e; }
+  .footer { margin-top: 30px; font-size: 9pt; color: #777; text-align: center; border-top: 1px solid #ddd; padding-top: 10px; }
+  .status-badge { display: inline-block; padding: 2px 10px; border-radius: 12px; font-size: 9pt; font-weight: bold;
+    background: {% if doc.status == "Settled" %}#d4edda{% elif doc.status == "Open" %}#fff3cd{% else %}#f8d7da{% endif %};
+    color: {% if doc.status == "Settled" %}#155724{% elif doc.status == "Open" %}#856404{% else %}#721c24{% endif %}; }
+</style>
+
+<div class="folio-wrap">
+  <!-- Header -->
+  <div class="folio-header">
+    {% if company %}
+      <h1>{{ company.company_name }}</h1>
+      <p>{{ company.address or "" }}</p>
+      <p>{{ company.phone_no or "" }}{% if company.email %} &nbsp;|&nbsp; {{ company.email }}{% endif %}</p>
+    {% endif %}
+  </div>
+
+  <div class="folio-title">
+    Guest Folio &mdash; {{ doc.name }}
+    &nbsp;<span class="status-badge">{{ doc.status }}</span>
+  </div>
+
+  <!-- Guest & Stay Details -->
+  <div class="meta-grid">
+    <div class="label">Guest</div>
+    <div class="value">{{ doc.guest_name or doc.guest }}</div>
+    <div class="label">Check-in</div>
+    <div class="value">{{ frappe.format(doc.check_in, "Datetime") }}</div>
+    <div class="label">Check-out</div>
+    <div class="value">{{ frappe.format(doc.check_out, "Datetime") if doc.check_out else "&mdash;" }}</div>
+    <div class="label">Room</div>
+    <div class="value">{{ doc.room or "&mdash;" }}</div>
+    <div class="label">Booking Ref</div>
+    <div class="value">{{ doc.booking or "&mdash;" }}</div>
+    <div class="label">Printed</div>
+    <div class="value">{{ frappe.format(frappe.utils.now_datetime(), "Datetime") }}</div>
+  </div>
+
+  <!-- Charges Table -->
+  <table>
+    <thead>
+      <tr>
+        <th>Date</th>
+        <th>Description</th>
+        <th>Charge Type</th>
+        <th class="td-right">Amount</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% set ns = namespace(charges=0, payments=0) %}
+      {% for row in doc.postings %}
+        {% if row.posting_type in ("Charge", "Service") %}
+          {% set ns.charges = ns.charges + (row.amount or 0) %}
+          <tr>
+            <td>{{ frappe.format(row.posting_date, "Date") }}</td>
+            <td>{{ row.description }}</td>
+            <td>{{ row.charge_type }}</td>
+            <td class="td-right">{{ frappe.format(row.amount, "Currency") }}</td>
+          </tr>
+        {% endif %}
+      {% endfor %}
+      {% for row in doc.postings %}
+        {% if row.posting_type == "Payment" %}
+          {% set ns.payments = ns.payments + (row.amount or 0) %}
+          <tr style="color:#1a6b2a">
+            <td>{{ frappe.format(row.posting_date, "Date") }}</td>
+            <td><em>{{ row.description }}</em></td>
+            <td>Payment</td>
+            <td class="td-right"><em>&minus;{{ frappe.format(row.amount, "Currency") }}</em></td>
+          </tr>
+        {% endif %}
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <!-- Totals -->
+  <div class="totals-box">
+    <table>
+      <tr>
+        <td>Total Charges</td>
+        <td class="td-right">{{ frappe.format(ns.charges, "Currency") }}</td>
+      </tr>
+      <tr>
+        <td>Total Payments</td>
+        <td class="td-right">&minus;{{ frappe.format(ns.payments, "Currency") }}</td>
+      </tr>
+      <tr class="grand-total">
+        <td>Balance Due</td>
+        <td class="td-right">{{ frappe.format(doc.balance_due or (ns.charges - ns.payments), "Currency") }}</td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="footer">
+    Thank you for staying with us. We hope to welcome you again soon.
+  </div>
+</div>

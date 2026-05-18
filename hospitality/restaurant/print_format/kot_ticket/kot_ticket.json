@@ -1,0 +1,10 @@
+{
+  "name": "KOT Ticket",
+  "doctype": "Print Format",
+  "doc_type": "KOT",
+  "module": "Restaurant",
+  "standard": "Yes",
+  "custom_format": 0,
+  "print_format_type": "Jinja",
+  "disabled": 0
+}

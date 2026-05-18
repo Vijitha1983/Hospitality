@@ -1,0 +1,14 @@
+{
+  "doctype": "Page",
+  "module": "Bar",
+  "name": "bar-pos",
+  "page_name": "bar-pos",
+  "title": "Bar POS",
+  "system_page": 0,
+  "roles": [
+    {"role": "Bar Manager"},
+    {"role": "Bar User"},
+    {"role": "Bartender"},
+    {"role": "System Manager"}
+  ]
+}
