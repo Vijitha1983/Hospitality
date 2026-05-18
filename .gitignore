@@ -13,6 +13,7 @@ node_modules/
 # Built app binaries — tracked folder, excluded binary files
 apps/release/*.exe
 apps/release/*.apk
+apps/release/*.msi
 apps/*/dist/
 apps/*/build/
 apps/*/__pycache__/
