@@ -18,11 +18,13 @@ from ui.dashboard import DashboardWidget
 from ui.arrivals import ArrivalsWidget
 from ui.check_in_dialog import CheckInDialog
 from ui.folio_dialog import FolioDialog
+from ui.bookings import BookingsWidget
 
 
 SIDEBAR_W = 200
 NAV_ITEMS = [
     ("🏠", "Dashboard",  "dashboard"),
+    ("📅", "Bookings",   "bookings"),
     ("✈",  "Arrivals",   "arrivals"),
     ("🚪", "Departures", "departures"),
     ("🛏",  "Rooms",      "rooms"),
@@ -130,6 +132,7 @@ class HotelDeskWindow(QMainWindow):
         self._stack.setObjectName("content")
 
         self._register("dashboard", DashboardWidget(self.api))
+        self._register("bookings",  BookingsWidget(self.api))
 
         arrivals = ArrivalsWidget(self.api)
         arrivals.check_in_requested.connect(self._open_check_in)

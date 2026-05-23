@@ -148,7 +148,18 @@ def _pick_outlet(api) -> str | None:
     try:
         outlets = api.restaurant.get_outlets()
     except Exception as e:
-        QMessageBox.critical(None, "Error", f"Could not load outlets:\n{e}")
+        msg = str(e)
+        if "not installed" in msg or "Failed to get method" in msg:
+            QMessageBox.critical(
+                None, "App Not Installed",
+                "The Hospitality app is not installed on this ERPNext server.\n\n"
+                "Ask your administrator to run:\n"
+                "  bench get-app https://github.com/Vijitha1983/Hospitality\n"
+                "  bench install-app hospitality\n"
+                "  bench migrate"
+            )
+        else:
+            QMessageBox.critical(None, "Error", f"Could not load outlets:\n{msg}")
         return None
     if not outlets:
         QMessageBox.warning(None, "No Outlets",
